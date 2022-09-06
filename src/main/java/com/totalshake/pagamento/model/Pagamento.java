@@ -2,6 +2,7 @@ package com.totalshake.pagamento.model;
 
 import com.totalshake.pagamento.dto.PagamentoDto;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class Pagamento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,9 +32,6 @@ public class Pagamento {
     private EnumStatus status;
     private Long pedidoId;
     private EnumFormadePagamento formaDePagamento;
-
-    public Pagamento() {
-    }
 
     public Pagamento(Long id, BigDecimal valor, String nome, String numero,
                      String expiracao, String codigo, EnumStatus status, Long pedidoId,
@@ -56,4 +55,5 @@ public class Pagamento {
         EnumFormadePagamento dtoEnumFormadePagamento = this.getFormaDePagamento();
         return new PagamentoDto(dtoId, dtoNome, enumStatus ,dtoValor, dtoEnumFormadePagamento);
     }
+
 }

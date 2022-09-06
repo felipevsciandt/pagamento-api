@@ -29,4 +29,10 @@ public class PagamentoService {
         var pagamento = pagamentoDto.converterParaPagamento();
         return repository.save(pagamento);
     }
+
+    public void deletarPagamento(Long id) {
+        var pagamentoDto = getPagamentoById(id);
+        Pagamento pagamento = pagamentoDto.converterParaPagamento();
+        repository.delete(pagamento);
+    }
 }

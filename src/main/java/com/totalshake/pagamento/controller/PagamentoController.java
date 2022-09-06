@@ -37,4 +37,9 @@ public class PagamentoController {
                 .buildAndExpand(pagamentoDto.getId()).toUri();
         return ResponseEntity.created(uri).body(pagamento);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public void deletarPagamento(@PathVariable Long id) {
+        service.deletarPagamento(id);
+    }
 }
