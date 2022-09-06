@@ -1,6 +1,6 @@
 package com.totalshake.pagamento.model;
 
-public enum enumFormadePagamento {
+public enum EnumFormadePagamento {
     PIX,
     DINHEIRO,
     CARTAO_DEBITO,

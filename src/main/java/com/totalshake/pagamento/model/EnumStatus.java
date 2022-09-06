@@ -1,5 +1,5 @@
 package com.totalshake.pagamento.model;
 
-public enum enumStatus {
+public enum EnumStatus {
     CRIADO, CONFIRMADO, CANCELADO
 }

@@ -1,13 +1,11 @@
 package com.totalshake.pagamento.model;
 
+import com.totalshake.pagamento.dto.PagamentoDto;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Getter
@@ -18,28 +16,27 @@ public class Pagamento {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotNull
-    @Min(0)
+    @Positive
     private BigDecimal valor;
     @NotBlank
-    @Max(100)
+    @Size(max = 100)
     private String nome;
     private String numero;
     private String expiracao;
     @NotBlank
-    @Min(3)
-    @Max(3)
+    @Size(min = 3, max = 3)
     private String codigo;
     @NotNull
-    private enumStatus status;
+    private EnumStatus status;
     private Long pedidoId;
-    private enumFormadePagamento formaDePagamento;
+    private EnumFormadePagamento formaDePagamento;
 
     public Pagamento() {
     }
 
     public Pagamento(Long id, BigDecimal valor, String nome, String numero,
-                     String expiracao, String codigo, enumStatus status, Long pedidoId,
-                     enumFormadePagamento formaDePagamento) {
+                     String expiracao, String codigo, EnumStatus status, Long pedidoId,
+                     EnumFormadePagamento formaDePagamento) {
         this.id = id;
         this.valor = valor;
         this.nome = nome;
@@ -49,5 +46,14 @@ public class Pagamento {
         this.status = status;
         this.pedidoId = pedidoId;
         this.formaDePagamento = formaDePagamento;
+    }
+
+    public PagamentoDto converterParaDto() {
+        Long dtoId = this.getId();
+        String dtoNome = this.getNome();
+        EnumStatus enumStatus = this.getStatus();
+        BigDecimal dtoValor = this.getValor();
+        EnumFormadePagamento dtoEnumFormadePagamento = this.getFormaDePagamento();
+        return new PagamentoDto(dtoId, dtoNome, enumStatus ,dtoValor, dtoEnumFormadePagamento);
     }
 }
