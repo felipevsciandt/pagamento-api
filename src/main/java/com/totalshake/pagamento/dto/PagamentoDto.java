@@ -16,6 +16,7 @@ public class PagamentoDto {
     private Long id;
     private String nome;
     private BigDecimal valor;
+
     private EnumFormadePagamento enumFormadePagamento;
 
     public PagamentoDto(Long id, String nome, EnumStatus status, BigDecimal valor, EnumFormadePagamento enumFormadePagamento) {

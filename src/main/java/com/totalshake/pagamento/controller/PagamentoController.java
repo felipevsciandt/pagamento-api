@@ -31,8 +31,8 @@ public class PagamentoController {
     }
 
     @PostMapping
-    public ResponseEntity<Pagamento> cadastrarPagamento(@RequestBody PagamentoDto pagamentoDto) {
-        Pagamento pagamento = service.cadastrarPagamento(pagamentoDto);
+    public ResponseEntity<Pagamento> criarPagamento(@RequestBody PagamentoDto pagamentoDto) {
+        Pagamento pagamento = service.criarPagamento(pagamentoDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(pagamentoDto.getId()).toUri();
         return ResponseEntity.created(uri).body(pagamento);

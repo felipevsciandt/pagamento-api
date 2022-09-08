@@ -30,6 +30,7 @@ public class Pagamento {
     private String codigo;
     @NotNull
     private EnumStatus status;
+    @NotNull
     private Long pedidoId;
     private EnumFormadePagamento formaDePagamento;
 
